@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 5 Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 30px;
+    }
+
+    form {
+      background-color: #fff;
+      width: 500px;
+      margin: 40px auto;
+      padding: 25px 35px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      vertical-align: top;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 65%;
+      padding: 6px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      margin-left: 150px;
+      margin-bottom: 15px;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+      display: inline-block;
+      width: auto;
+      font-weight: normal;
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+
+    /* Confirmation message */
+    #confirmation {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lab 5 Form</h1>
+
+  <form id="lab5form" action="http://bloomingdale.sat.iit.edu/kriedan/lab3formscript.php" method="post">
+    <!-- First Name -->
+    <label for="first_name_field">First Name:</label>
+    <input type="text" id="first_name_field" name="first_name_field" required><br><br>
+
+    <!-- Last Name -->
+    <label for="last_name_field">Last Name:</label>
+    <input type="text" id="last_name_field" name="last_name_field" required><br><br>
+
+    <!-- Phone -->
+    <label for="phone_field">Phone Number:</label>
+    <input type="tel" id="phone_field" name="phone_field" placeholder="123-456-7890"><br><br>
+
+    <!-- Email -->
+    <label for="email_field">Email:</label>
+    <input type="email" id="email_field" name="email_field" required><br><br>
+
+    <!-- Age -->
+    <label for="age_field">Age Range:</label>
+    <select id="age_field" name="age_field">
+      <option value="under18">Under 18</option>
+      <option value="18-25">18–25</option>
+      <option value="26-35">26–35</option>
+      <option value="36-45">36–45</option>
+      <option value="46-60">46–60</option>
+      <option value="60plus">60+</option>
+    </select><br><br>
+
+    <!-- Gender -->
+    <label>Gender:</label>
+    <div class="radio-group">
+      <input type="radio" id="male" name="gender_field" value="Male">
+      <label for="male">Male</label>
+
+      <input type="radio" id="female" name="gender_field" value="Female">
+      <label for="female">Female</label>
+
+      <input type="radio" id="other" name="gender_field" value="Other">
+      <label for="other">Other</label>
+    </div>
+
+    <!-- Availability -->
+    <label>Available Days:</label>
+    <div class="checkbox-group">
+      <input type="checkbox" id="monday" name="available_field[]" value="Monday">
+      <label for="monday">Monday</label>
+
+      <input type="checkbox" id="tuesday" name="available_field[]" value="Tuesday">
+      <label for="tuesday">Tuesday</label>
+
+      <input type="checkbox" id="wednesday" name="available_field[]" value="Wednesday">
+      <label for="wednesday">Wednesday</label>
+
+      <input type="checkbox" id="thursday" name="available_field[]" value="Thursday">
+      <label for="thursday">Thursday</label>
+
+      <input type="checkbox" id="friday" name="available_field[]" value="Friday">
+      <label for="friday">Friday</label>
+    </div>
+
+    <!-- Comments -->
+    <label for="comments_field">Comments:</label>
+    <textarea id="comments_field" name="comments_field" rows="5" cols="40" placeholder="Enter your comments here..."></textarea><br><br>
+
+    <!-- Hidden Field -->
+    <input type="hidden" name="hidden_field" value="Viktor Fernandez">
+
+    <!-- Submit -->
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Confirmation message -->
+  <div id="confirmation">✅ Form submitted successfully!</div>
+
+  <script>
+    const form = document.getElementById('lab5form');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // stop immediate submission to show message
+
+      confirmation.style.display = 'block'; // show confirmation
+      setTimeout(() => {
+        form.submit(); // continue submission after delay
+      }, 1500); // wait 1.5 seconds before submitting
+    });
+  </script>
+</body>
+</html>
